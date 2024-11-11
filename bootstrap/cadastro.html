@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/styles-atividade.css">
+    <title>Inova Tech - Cadastro</title>
+</head>
+<body class="body-cadastro">
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAM88Gkh8bp0IgGmhoWTOIVOO3eF6bPfIM",
+          authDomain: "bd-praticar.firebaseapp.com",
+          projectId: "bd-praticar",
+          storageBucket: "bd-praticar.appspot.com",
+          messagingSenderId: "282064644836",
+          appId: "1:282064644836:web:d6e2c5d8de0a92d89adaf1",
+          measurementId: "G-3FC4BPXT32"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const db = getFirestore(app);
+
+        // Manipular o envio do formulário
+        document.getElementById('form').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        // Capturar os dados do formulário
+        const nome = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const city = document.getElementById('city').value;
+        const neighborhood = document.getElementById('neighborhood').value;
+        const state = document.getElementById('state').value;
+        const cep = document.getElementById('cep').value;
+
+
+  try {
+    // Enviar os dados para o Firestore
+    await addDoc(collection(db, 'cadastro1'), {
+      cep: cep,
+      email: email,
+      city:city,
+      name:name,
+      neighborhood:neighborhood,
+      phone:phone,
+      state:state,
+      timestamp: serverTimestamp() // adiciona um carimbo de tempo
+    });
+    alert('Dados enviados com sucesso!');
+    document.getElementById('form').reset(); // Limpa o formulário
+  } catch (error) {
+    console.error('Erro ao enviar os dados: ', error);
+  }
+});
+      </script>
+<div class="container mt-5 " id="form">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-container p-4 border rounded bg-light">
+        <form action="/submit" method="post">
+          <h2 class="mb-4 text-center">Cadastro Inova Tech</h2>
+
+          <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" name="name" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Digite um email válido, como exemplo@dominio.com" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="phone" class="form-label">Telefone</label>
+            <input type="tel" class="form-control" id="phone" name="phone"  placeholder="(XX) XXXXX-XXXX" title="Formato esperado: (XX) XXXXX-XXXX" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="city" class="form-label">Cidade</label>
+            <input type="text" class="form-control" id="city" name="city" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="state" class="form-label">Estado</label>
+            <input type="text" class="form-control" id="state" name="state" pattern="[A-Za-zÀ-ÿ\s]{2,}" title="Digite o nome completo do estado" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="neighborhood" class="form-label">Bairro</label>
+            <input type="text" class="form-control" id="neighborhood" name="neighborhood" pattern="[A-Za-zÀ-ÿ\s]+" title="Apenas letras e espaços são permitidos" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="cep" name="cep" pattern="\d{5}-\d{3}" placeholder="12345-678" title="Formato esperado: 12345-678" required>
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+            <a href="/praticar.html" class="btn btn-secondary">Voltar para a página inicial</a>
+          </div>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

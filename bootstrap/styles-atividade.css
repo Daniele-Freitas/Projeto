@@ -1,0 +1,186 @@
+.btn-cadastro {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+  
+
+.container{
+    margin-top: 150px;
+}  
+body{
+    background-image: url(/img/cidadeparallax.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative; 
+}
+p ,h1{
+    color: #fff;
+    text-align: justify;
+}
+p{
+    font-size: 20px;
+}
+
+body{
+    height: 1700px;
+}
+* {
+    box-sizing: border-box;
+  }
+  
+.body-cadastro {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f9;
+  }
+  
+  .form-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  form h2 {
+    text-align: center;
+    color: #333333;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    color: #333333;
+    margin-top: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+  }
+
+  .btn-cadastro{
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 20px;
+  }
+  
+
+/* Navbar styling */
+.navbar {
+    background-color: #ffffff;
+    border-bottom: 1px solid #eaeaea;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+  }
+  
+  .nav-link {
+    color: #0056b3 !important;
+    font-weight: 500;
+  }
+  
+
+  /* Button styling */
+  .btn-cadastro {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+    width: 200px;
+    margin-left: auto;
+  }
+  
+
+  
+  /* Other container styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+/* copy*/
+#copy-area{
+  background-color: #ffffff;
+}
+
+#copy-area .container{
+  padding: 10px 0;
+}
+#copy-area .container p{
+  margin-bottom: 0;
+  color: #000000;
+  text-align: center;
+}
+.col-12{
+  margin-bottom: 50px;
+}
+
+@media(max-width:768px){
+  .navbar{
+    max-width: 768px;
+  }
+  .col-md-4{
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}

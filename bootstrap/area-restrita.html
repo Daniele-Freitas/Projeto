@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inova Tech</title>
+    <link rel="stylesheet" href="/css/styles-atividade.css">
+
+</head>
+<body>
+    <h1> Relação de Clientes - Inova Tech </h1>
+    <table border="1" id="corpoTabela">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Estado</th>
+            <th>Cidade</th>
+            <th>CEP</th>
+            <th>Bairro</th>
+
+
+
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+      
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+          apiKey: "AIzaSyAM88Gkh8bp0IgGmhoWTOIVOO3eF6bPfIM",
+          authDomain: "bd-praticar.firebaseapp.com",
+          projectId: "bd-praticar",
+          storageBucket: "bd-praticar.appspot.com",
+          messagingSenderId: "282064644836",
+          appId: "1:282064644836:web:d6e2c5d8de0a92d89adaf1",
+          measurementId: "G-3FC4BPXT32"
+        };
+      
+        // Inicialiazar o Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        async function carregarCadastro() {
+        const corpoTabela = document.getElementById('corpoTabela').getElementsByTagName('tbody')[0];
+
+      try {
+        const querySnapshot = await getDocs(collection(db, "cadastro1"));
+
+        querySnapshot.forEach((doc) => {
+          const { nome, email, phone,state,city,cep,neighborhood, timestamp } = doc.data();
+          const dataFormatada = timestamp ? new Date(timestamp.toDate()).toLocaleString() : 'N/A';
+
+          const novaLinha = document.createElement('tr');
+          novaLinha.innerHTML = `
+            <td>${nome}</td>
+            <td>${email}</td>
+            <td>${phone}</td>
+            <td>${state}</td>            
+            <td>${city}</td>
+            <td>${cep}</td>
+            <td>${neighborhood}</td>
+            <td>${dataFormatada}</td>
+          `;
+          corpoTabela.appendChild(novaLinha);
+        });
+
+      } catch (error) {
+        console.error('Erro ao carregar o cadastro: ', error);
+      }
+    }
+
+    // Chama a função para carregar os contatos ao carregar a página
+    window.onload = carregarCadastro;
+    
+      </script>
+</body>
+
+      </script>
+</body>
+</html>
